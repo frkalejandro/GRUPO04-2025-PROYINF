@@ -1,4 +1,4 @@
-# Proyecto-INF236-Grupo-4
+# Plataforma digital de ensayos tipo PAES 
 
 ## Descripción del Proyecto
 
