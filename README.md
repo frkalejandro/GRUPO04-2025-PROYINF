@@ -18,9 +18,10 @@ Características principales:
 Esta iniciativa busca potenciar la preparación de los estudiantes de enseñanza media para la PAES, entregando una herramienta útil tanto para docentes como para alumnos, con foco en la mejora continua del aprendizaje.
 ## Integrantes del Equipo
 
-- **Franciso Alejandro Espinosa Ramirez** - Rol: 202130523-8 
-- **Bastian Ignacio Torres Campillay** - Rol: 202204637-6
-- **Matias Alejandro Ramos Echeverria** - Rol: 202230512-6
+- Franciso Alejandro Espinosa Ramirez - Rol: 202130523-8 
+- Bastian Ignacio Torres Campillay - Rol: 202204637-6
+- Matias Alejandro Ramos Echeverria - Rol: 202230512-6
+- **Tutor:** Javiera Cristina Osorio Mardones
 
 ## Presentación del Cliente
 
