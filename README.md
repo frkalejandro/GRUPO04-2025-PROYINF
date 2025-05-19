@@ -23,6 +23,30 @@ Esta iniciativa busca potenciar la preparación de los estudiantes de enseñanza
 - Matias Alejandro Ramos Echeverria - Rol: 202230512-6
 - **Tutor:** Javiera Cristina Osorio Mardones
 
+
+## Arquitectura Técnica
+
+El sistema está compuesto por 3 servicios:
+
+- **Frontend**: React (Dockerizado)
+- **Backend**: Node.js + Express (Dockerizado)
+- **Base de datos**: PostgreSQL (Dockerizado)
+
+Todos los servicios son orquestados mediante `docker-compose`.
+
+---
+## Estado de las Tareas
+
+| Tarea                                      | Estado  |
+|-------------------------------------------|----------|
+| Diseño de la arquitectura                 | Completo |
+| Implementación del backend (Node.js + DB) | Completo |
+| Implementación del frontend (React)       | Completo |
+| Dockerización del sistema completo        | Completo |
+| Historia de usuario implementada          | Completo |
+| Demostración funcional                    | Completo |
+
+---
 ## Presentación del Cliente
 
 [Enlace a la presentacion del cliente](https://usmcl-my.sharepoint.com/:v:/g/personal/francisco_espinosa_usm_cl/EV0DEC4Bcd1Nr3V14j2dQqAB32d1ePXv85Zl1Rf3U0ITUA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=3RqHxm) 
