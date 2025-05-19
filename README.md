@@ -64,3 +64,6 @@ El prototipo permite:
 
 [Enlace a la Wiki del proyecto](https://github.com/frkalejandro/GRUPO04-2025-PROYINF/wiki)
 
+## VideoH3
+https://youtu.be/9rbfV6fwiAQ
+
