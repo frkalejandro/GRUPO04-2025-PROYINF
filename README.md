@@ -35,6 +35,15 @@ El sistema está compuesto por 3 servicios:
 Todos los servicios son orquestados mediante `docker-compose`.
 
 ---
+## Demostración del Prototipo
+
+El prototipo permite:
+
+- Visualizar ensayos existentes desde la base de datos.
+- Agregar un nuevo ensayo desde la interfaz web.
+- Conexión en tiempo real entre frontend y backend vía API REST.
+
+---
 ## Estado de las Tareas
 
 | Tarea                                      | Estado  |
