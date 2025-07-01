@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import API from './api';
+import { useUser } from './UserContext';
 
 function ResponderEnsayo() {
+  const { user } = useUser();
+
+  const [ensayos, setEnsayos] = useState([]);
   const [ensayoId, setEnsayoId] = useState('');
-  const [usuarioId, setUsuarioId] = useState('');
   const [preguntas, setPreguntas] = useState([]);
   const [respuestas, setRespuestas] = useState({});
+
+  useEffect(() => {
+    API.get('/ensayos')
+      .then(res => setEnsayos(res.data))
+      .catch(() => alert('❌ Error al cargar ensayos'));
+  }, []);
 
   const buscarPreguntas = async () => {
     try {
@@ -23,7 +32,7 @@ function ResponderEnsayo() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
-      usuarioId: parseInt(usuarioId),
+      usuarioId: user.id,
       ensayoId: parseInt(ensayoId),
       respuestas: Object.entries(respuestas).map(([preguntaId, seleccionada]) => ({
         preguntaId: parseInt(preguntaId),
@@ -41,16 +50,18 @@ function ResponderEnsayo() {
   return (
     <div>
       <h2>Responder Ensayo</h2>
-      <input
-        placeholder="ID del Ensayo"
-        value={ensayoId}
-        onChange={e => setEnsayoId(e.target.value)}
-      />
-      <input
-        placeholder="ID del Usuario"
-        value={usuarioId}
-        onChange={e => setUsuarioId(e.target.value)}
-      />
+
+      <select value={ensayoId} onChange={e => setEnsayoId(e.target.value)} required>
+        <option value="">-- Selecciona un ensayo --</option>
+        {ensayos.map(e => (
+          <option key={e.id} value={e.id}>
+            {e.titulo} — {e.materia}
+          </option>
+        ))}
+      </select>
+
+      <p><small>Respondiendo como: {user?.nombre} (ID: {user?.id})</small></p>
+
       <button onClick={buscarPreguntas}>Cargar Preguntas</button>
 
       <form onSubmit={handleSubmit}>

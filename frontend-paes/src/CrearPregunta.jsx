@@ -1,8 +1,11 @@
 // src/CrearPregunta.jsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import API from './api';
+import { useUser } from './UserContext'; // 👈 importar contexto
 
 function CrearPregunta() {
+  const { user } = useUser(); // 👈 obtener usuario logueado
+
   const [form, setForm] = useState({
     enunciado: '',
     alternativaA: '',
@@ -11,6 +14,20 @@ function CrearPregunta() {
     correcta: '',
     ensayoId: ''
   });
+
+  const [ensayos, setEnsayos] = useState([]);
+
+  useEffect(() => {
+    const fetchEnsayos = async () => {
+      try {
+        const res = await API.get('/ensayos');
+        setEnsayos(res.data);
+      } catch (err) {
+        alert('❌ Error al obtener ensayos');
+      }
+    };
+    fetchEnsayos();
+  }, []);
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,7 +43,8 @@ function CrearPregunta() {
         c: form.alternativaC
       },
       correcta: form.correcta,
-      ensayoId: form.ensayoId
+      ensayoId: form.ensayoId,
+      autorId: user?.id // 👈 si lo necesitas más adelante en el backend
     };
 
     try {
@@ -50,7 +68,18 @@ function CrearPregunta() {
         <option value="b">B</option>
         <option value="c">C</option>
       </select>
-      <input name="ensayoId" placeholder="ID del Ensayo" onChange={handleChange} required />
+
+      <select name="ensayoId" onChange={handleChange} required>
+        <option value="">-- Seleccionar Ensayo --</option>
+        {ensayos.map(e => (
+          <option key={e.id} value={e.id}>
+            {e.titulo} ({e.materia})
+          </option>
+        ))}
+      </select>
+
+      {/* Mostrar autor actual */}
+      <p><small>Autor: {user?.nombre} (ID: {user?.id})</small></p>
       <button type="submit">Crear Pregunta</button>
     </form>
   );

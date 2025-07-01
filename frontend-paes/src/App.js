@@ -6,10 +6,14 @@ import ListaEnsayos from './ListaEnsayos';
 import CrearPregunta from './CrearPregunta';
 import ResponderEnsayo from './ResponderEnsayo';
 import VerResultado from './VerResultado';
+import SeguimientoEstudiante from './SeguimientoEstudiante';
+import BancoPreguntas from './BancoPreguntas';
+import EditarPregunta from './EditarPregunta';
 import { useUser } from './UserContext';
 
 function App() {
   const [view, setView] = useState('register');
+  const [preguntaIdEditar, setPreguntaIdEditar] = useState(null);
   const { user, setUser } = useUser();
 
   const logout = () => {
@@ -43,7 +47,9 @@ function App() {
         {user?.rol === 'docente' && (
           <>
             <button onClick={() => setView('crearEnsayo')}>📄 Crear Ensayo</button>{' '}
-            <button onClick={() => setView('crearPregunta')}>❓ Crear Pregunta</button>
+            <button onClick={() => setView('crearPregunta')}>❓ Crear Pregunta</button>{' '}
+            <button onClick={() => setView('seguimiento')}>🎯 Seguimiento</button>{' '}
+            <button onClick={() => setView('banco')}>📚 Banco de Preguntas</button>
           </>
         )}
 
@@ -65,6 +71,11 @@ function App() {
       {view === 'crearPregunta' && <CrearPregunta />}
       {view === 'responderEnsayo' && <ResponderEnsayo />}
       {view === 'verResultado' && <VerResultado />}
+      {view === 'seguimiento' && <SeguimientoEstudiante />}
+      {view === 'banco' && <BancoPreguntas setPreguntaIdEditar={setPreguntaIdEditar} setView={setView} />}
+      {view === 'editarPregunta' && preguntaIdEditar && (
+        <EditarPregunta preguntaId={preguntaIdEditar} onVolver={() => setView('banco')} />
+      )}
     </div>
   );
 }
