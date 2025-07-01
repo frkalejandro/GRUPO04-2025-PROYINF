@@ -28,7 +28,7 @@ Esta iniciativa busca potenciar la preparación de los estudiantes de enseñanza
 
 El sistema está compuesto por 3 servicios:
 
-- **Frontend**: React (Dockerizado)
+- **Frontend**: React 
 - **Backend**: Node.js + Express (Dockerizado)
 - **Base de datos**: PostgreSQL (Dockerizado)
 
